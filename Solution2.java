@@ -1,36 +1,42 @@
-import java.util.Arrays;
-import java.util.Scanner;
-
-public class Solution2 {
-	public static int numberNeeded(String first, String second) {
-
-		
-		int[] lettercounts = new int[26];
-		for(char c : first.toCharArray()){
-			System.out.println(c + "==>"+ (c -'a'));
-			lettercounts[c-'a']++;
-		}
-		System.out.println("LetterCount-1:: " + Arrays.toString(lettercounts));
-		for(char c : second.toCharArray()){
-			lettercounts[c-'a']--;
-		}
-		System.out.println("LetterCount-2:: " + Arrays.toString(lettercounts));
-
-		int result = 0;
-		for(int i : lettercounts){
-			result += Math.abs(i);
-		}
-		return result;
-	}
-
-	public static void main(String[] args) {
-		/*Scanner in = new Scanner(System.in);
-		String a = in.next();
-		String b = in.next();*/
-		//String str1 = "fcrxzwscanmligyxyvym";
-		String str1 = "sabari";
-		String str2 =  "jxwtrhvujlmrpdoqbisbwhmgpmeoke";
-		
-		System.out.println(numberNeeded(str1, str2));
-	}
+class Solution2 {
+	
+	static int var=0;
+	
+    public int search(int[] nums, int target) {
+        int Left = 0;
+        int Right = nums.length-1;
+        return findNumber(Left,Right,nums,target);
+      
+    }
+     public int findNumber(int Left, int Right, int[] nums, int target) {
+    	  int mid = (Left + Right) / 2;
+          if(nums[mid] == target) {
+          	return mid;
+          }
+          else {
+              if(nums[mid]<target) {
+                  Left = mid+1;
+                  var++;
+                  return findNumber(Left,Right, nums,target);
+              }
+              else if(nums[mid]>target) {
+                  Right = mid-1;
+                  var++;
+                  return findNumber(Left,Right, nums,target);
+              }
+                  
+          }
+          
+          return -1;
+        }
+     
+     
+     public static void main(String ...strings) {
+    	//int iArr[] = {-1,0,3,5,9,2,5,7,16,55,76,78,12};
+    	 int iArr[] = {-1,0,2,3,5,7,9,12,16,55,76,78};
+    	Solution2 r1 = new Solution2();
+    	System.out.println(r1.search(iArr,78));
+    	System.out.println("number" +var);
+    	
+     }
 }

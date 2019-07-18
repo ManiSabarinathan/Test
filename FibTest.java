@@ -1,34 +1,18 @@
-import java.util.Arrays;
 
 public class FibTest {
-	static int input=8;
-	static int loopCount=0;
-	int f[] = new int[input+1];
+	static int numb = 2;
+	static int F0=0;
+	static int F1=1;
+	static int result;
+	
 	public static void main(String ...strings ) {
-		//0 1 1 2 3 5 8 13 21 34 
-		
 		FibTest t = new FibTest();
-		t.fib(input);
+		t.cal(numb);
 	}
 	
-	public void  fib(int n) {
-		System.out.println("Loop Count ==> " + loopCount++ );
-		
-		System.out.println(" n ==> "+ n);
-		
-		f[0] = 0;
-		f[1] = 1;
-		if(f[n-1] ==0 ) {
-			 fib(n-1);
-		}
-		else {
-			f[n] = f[n-1] + f[n-2];
-			System.out.println(f[n]);
-					}
-		if(n != input) {
-			System.out.println("Loop again ..." );
-			fib(input);
-		}
-		
+	public void cal(int numb) {
+		int result = numb+(numb-1);
 	}
+	
+	
 }

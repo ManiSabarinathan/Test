@@ -5,17 +5,20 @@ public class QuickSortTest {
 
 	public static void main(String ...strings ) {
 		
-		int i = 0;
-		int j = arr.length-1;
-		QuickSortTest sort = new QuickSortTest();
-		sort.quicksort(i,j);
-		
+		int l = 0;
+		int h = arr.length-1;
+		if(l<h) {
+			int j = quicksort(l,h);
+			quicksort(l,j);
+			quicksort(j+1,h);
 		}
+	}
 	
-		public void quicksort(int i, int j) {
+		public static int  quicksort(int l, int h) {
 			System.out.println("Initial Array:: " + Arrays.toString(arr));
-			int pivot = arr[i];
-			
+			int pivot = arr[l];
+			int i=l;
+			int j=h;
 			
 			while(i<j) {
 				do {
@@ -36,16 +39,15 @@ public class QuickSortTest {
 				}
 				System.out.println(Arrays.toString(arr));				
 			}
-			System.out.println("Moving pivot to the correct position"+ arr[j] + " -- " + pivot );
-		    //Pending to complete
+			System.out.println("Moving pivot to the correct position"+ arr[j] + " -- " + arr[l] );
+			int temp1 = arr[l];
+			arr[l] = arr[j];
+			arr[j] = temp1;
 			
-			System.out.println("Just print:: "+ arr[j] + " --  " + pivot );
 			
+			System.out.println("Just print:: "+ arr[j] + " --  " + arr[l] );
 			System.out.println("Phase-1:: " + Arrays.toString(arr));				
-			
+			return j;
 			
 		}
-		
-		
-	
 }

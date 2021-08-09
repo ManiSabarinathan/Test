@@ -24,14 +24,22 @@ public class AnagramRemoveCharTest {
 		
 		
 	}
-	public boolean checkAnagram(String arr1[], String arr2[]) {
-		boolean status=false;
-		for(int i=0;i<arr1.length;i++) {
-			if(arr1[i] != arr2[i]) { return false; }
-			else
-			status= true;
+	public boolean checkAnagram(String arr1, String arr2) {
+		if(arr1.length() != arr2.length()) {
+			return false;
 		}
-		return status;
+			
+		char[] c1 = arr1.toCharArray();
+		char[] c2 = arr2.toCharArray();
+		Arrays.sort(c1);
+		Arrays.sort(c2);
+		
+		for(int i=0;i<c1.length;i++) {
+			if(c1[i] != c2[i]) { 
+				return false; 
+			}
+		}
+		return true;
 	}
 	
 	public int removeCharAnagram(char arr1[], char arr2[]) {
